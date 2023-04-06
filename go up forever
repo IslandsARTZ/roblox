@@ -3,4 +3,5 @@ myblock.anchor = true
 
 while true do
 myblock.position = Vector3.new(0,1,0)
+wait(0.01)
 end
