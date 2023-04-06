@@ -1,0 +1,26 @@
+-- Define a variable to hold the player's data
+local playerData = {}
+
+-- Function to save the player's data
+local function saveData(player)
+    -- Get the player's unique ID
+    local playerId = player.UserId
+    
+    -- Save the player's data to a data store
+    game:GetService("DataStoreService"):GetDataStore("PlayerData"):SetAsync(playerId, playerData)
+end
+
+-- Function to load the player's data
+local function loadData(player)
+    -- Get the player's unique ID
+    local playerId = player.UserId
+    
+    -- Load the player's data from the data store
+    playerData = game:GetService("DataStoreService"):GetDataStore("PlayerData"):GetAsync(playerId) or {}
+end
+
+-- When a player joins the game, load their data
+game.Players.PlayerAdded:Connect(loadData)
+
+-- When a player leaves the game, save their data
+game.Players.PlayerRemoving:Connect(saveData)
