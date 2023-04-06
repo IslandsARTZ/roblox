@@ -1,0 +1,12 @@
+local myblock = script.parent
+--set secvar to how many secounds of time between open and close
+secvar = 1
+
+
+
+while true do
+myblock.visible = true
+wait(secvar)
+myblock.visible = false
+wait(secvar)
+end
